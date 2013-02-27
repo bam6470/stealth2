@@ -33,8 +33,6 @@ namespace Rogue
             screenSelect = ScreenType.MainMenu;
             screen = new MainMenu(this);
             Components.Add(screen);
-            //((MainMenu)screen).Initialize();
-            //((MainMenu)screen).LoadContent();
             ((MainMenu)screen).moveToPlayGame += changeScreen;
 
             // Initialize the pointer

@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Rogue
 {
+    // This class is a drawable interface to display a pointer
     public class Pointer : Microsoft.Xna.Framework.DrawableGameComponent
     {
         MouseState mouseState;
@@ -40,6 +41,7 @@ namespace Rogue
         public override void Draw(GameTime gameTime)
         {
             spritebatch.Begin();
+            // Draws the pointer
             spritebatch.Draw(pointerSprite,
                     new Vector2(mouseState.X, mouseState.Y),
                     null,

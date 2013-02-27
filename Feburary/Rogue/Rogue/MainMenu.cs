@@ -17,6 +17,8 @@ namespace Rogue
         GraphicsDeviceManager graphics;
         MouseState mouseState;
         SpriteBatch spritebatch;
+
+        // Play button stuff
         Texture2D playSprite;
         Rectangle playButton;
 
@@ -35,14 +37,18 @@ namespace Rogue
         protected override void LoadContent()
         {
             spritebatch = new SpriteBatch(GraphicsDevice);
+            // Sets data for the play button
             playSprite = Game.Content.Load<Texture2D>(@"images/Play");
+            // Specifies where the playbutton is located
             playButton = new Rectangle((graphics.PreferredBackBufferWidth / 2) - (playSprite.Width / 2), 150, playSprite.Width, playSprite.Height);
         }
         public override void Update(GameTime gameTime)
         {
             mouseState = Mouse.GetState();
+            // Check if left Mouse is clicked
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
+                // Check if the mouse is on any buttons
                 if (playButton.Intersects(new Rectangle(mouseState.X, mouseState.Y, 1, 1)))
                 {
                     moveToPlayGame(this, new ChangeScreenEventArgs(ScreenType.InGame));
@@ -54,6 +60,7 @@ namespace Rogue
         {
             GraphicsDevice.Clear(Color.Tan);
             spritebatch.Begin();
+            // Draw buttons
             spritebatch.Draw(playSprite, playButton, Color.White);
             spritebatch.End();
             base.Update(gameTime);
